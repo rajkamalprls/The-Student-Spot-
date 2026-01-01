@@ -1,0 +1,78 @@
+import { motion } from "framer-motion";
+import { Quote } from "lucide-react";
+
+const testimonials = [
+  {
+    quote: "TSS helped me land my first internship when I had zero industry connections. The mentorship and exposure changed my career trajectory.",
+    name: "Priya Sharma",
+    role: "Software Developer",
+    company: "Tech Startup",
+    image: null,
+  },
+  {
+    quote: "As a college placement officer, partnering with TSS transformed our placement rates. Students now have access to opportunities we couldn't provide alone.",
+    name: "Dr. Ramesh Kumar",
+    role: "Placement Director",
+    company: "Engineering College",
+    image: null,
+  },
+  {
+    quote: "We found motivated, trained interns through TSS. The quality of candidates is remarkable compared to traditional hiring channels.",
+    name: "Sneha Patel",
+    role: "HR Manager",
+    company: "Growing Startup",
+    image: null,
+  },
+];
+
+const Testimonials = () => {
+  return (
+    <section className="py-16 lg:py-24 bg-foreground text-background">
+      <div className="container mx-auto px-4">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12"
+        >
+          <h2 className="font-heading text-3xl lg:text-4xl font-bold mb-4">
+            Success <span className="text-secondary">Stories</span>
+          </h2>
+          <p className="text-background/70 max-w-2xl mx-auto">
+            Real people. Real outcomes. Real transformation.
+          </p>
+        </motion.div>
+
+        <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
+          {testimonials.map((testimonial, index) => (
+            <motion.div
+              key={testimonial.name}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="bg-background/5 backdrop-blur-sm rounded-2xl p-6 lg:p-8 border border-background/10 hover:border-secondary/30 transition-colors"
+            >
+              <Quote className="w-10 h-10 text-secondary/50 mb-4" />
+              <p className="text-background/90 mb-6 leading-relaxed">
+                "{testimonial.quote}"
+              </p>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-full bg-secondary/20 flex items-center justify-center text-secondary font-heading font-bold">
+                  {testimonial.name.charAt(0)}
+                </div>
+                <div>
+                  <p className="font-semibold text-background">{testimonial.name}</p>
+                  <p className="text-sm text-background/60">{testimonial.role}, {testimonial.company}</p>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Testimonials;
